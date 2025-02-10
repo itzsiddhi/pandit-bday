@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan's Birthday</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .btn {
+            background: #fff;
+            color: #ff4081;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 64, 129, 0.4);
+            display: none;
+        }
+        .btn:hover {
+            background: #ff4081;
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Countdown to Aryan's Birthday 🎉</h1>
+        <p id="countdown"></p>
+        <button class="btn" id="messageBtn" onclick="showMessage()">🎂 Show Birthday Message</button>
+        <button class="btn" id="funFactBtn" onclick="showFunFact()">✨ Fun Fact</button>
+        <button class="btn" id="quizBtn" onclick="startQuiz()">🎶 Take Quiz</button>
+        <button class="btn" id="cakeBtn" onclick="showCake()">🎁 Show Cake Meme</button>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('February 12, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left!`;
+            
+            if (timeLeft <= 0) {
+                document.getElementById('countdown').innerHTML = "🎉 It's Aryan's Birthday! 🎉";
+                document.querySelectorAll('.btn').forEach(btn => btn.style.display = 'inline-block');
+            } else {
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        function showMessage() {
+            Swal.fire("🎂 Happy Birthday Aryan! 🎂", "Wishing you a day filled with joy, laughter, and all the things you love! 🎈");
+            confetti();
+        }
+        
+        function showFunFact() {
+            Swal.fire("✨ Fun Fact! ✨", "Aryan is super emotional yet funny, a rare and awesome combo! 😃");
+            confetti();
+        }
+        
+        function startQuiz() {
+            Swal.fire({
+                title: "🎶 Quiz Time! 🎶",
+                text: "What is the one song that is relatable to both of us?",
+                input: "text",
+                showCancelButton: true,
+                confirmButtonText: "Submit",
+            }).then((result) => {
+                if (result.value && result.value.toLowerCase().trim() === "abhi na jao chod kar") {
+                    Swal.fire("Correct! 😎", "You really know us well!", "success");
+                } else {
+                    Swal.fire("Oops!", "The correct answer is 'Abhi Na Jao Chhod Ke' 🎶", "error");
+                }
+            });
+        }
+        
+        function showCake() {
+            Swal.fire({
+                title: "🎂 Cake Time! 🎂",
+                text: "Enjoy your virtual cake! 🍰",
+                imageUrl: "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+                imageWidth: 300,
+                imageAlt: "Birthday Cake GIF",
+            });
+            confetti();
+        }
+        
+        function confetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+        
+        updateCountdown();
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #ff7eb3, #ff758c);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    padding: 30px;
+}
+
+/* Buttons */
+.btn {
+    background: white;
+    color: #ff4f7b;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #ff4f7b;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Countdown */
+#countdown {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+}
