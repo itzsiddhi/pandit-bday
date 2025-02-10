@@ -56,27 +56,30 @@
 
     <script>
         function updateCountdown() {
-            const targetDate = new Date('February 12, 2025 00:00:00').getTime();
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
+            const targetDate = new Date("February 12, 2025 00:00:00").getTime();
             
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left!`;
-            
-            if (timeLeft <= 0) {
-                document.getElementById('countdown').innerHTML = "🎉 It's Aryan's Birthday! 🎉";
-                document.querySelectorAll('.btn').forEach(btn => btn.style.display = 'inline-block');
-            } else {
-                setTimeout(updateCountdown, 1000);
+            function tick() {
+                const now = new Date().getTime();
+                const timeLeft = targetDate - now;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                document.getElementById('countdown').innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left!`;
+                
+                if (timeLeft <= 0) {
+                    document.getElementById('countdown').innerHTML = "🎉 It's Aryan's Birthday! 🎉";
+                    document.querySelectorAll('.btn').forEach(btn => btn.style.display = 'inline-block');
+                } else {
+                    setTimeout(tick, 1000);
+                }
             }
+            tick();
         }
         
         function showMessage() {
-            Swal.fire("🎂 Happy Birthday Aryan! 🎂", "Wishing you a day filled with joy, laughter, and all the things you love! 🎈");
+            Swal.fire("🎂 Happy Birthday Aryan! 🎂", "Wishing you a day filled with endless laughter, unforgettable moments, and all the happiness you deserve! May this year bring new adventures, genuine friendships, and memories worth cherishing. Stay the amazing, emotional yet hilarious person you are! 🎈✨");
             confetti();
         }
         
@@ -105,7 +108,7 @@
             Swal.fire({
                 title: "🎂 Cake Time! 🎂",
                 text: "Enjoy your virtual cake! 🍰",
-                imageUrl: "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+                imageUrl: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWc3aHp4NjdsazIzOGZqNG5oNW1yam9teXg3YjAxdzlvcnM5NXUyciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9JZYVpuXk2KmA/giphy.gif",
                 imageWidth: 300,
                 imageAlt: "Birthday Cake GIF",
             });
